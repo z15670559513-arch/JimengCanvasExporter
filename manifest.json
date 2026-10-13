@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "即梦画布批量导出助手",
+  "version": "0.5.0",
+  "version_name": "0.5.0",
+  "minimum_chrome_version": "116",
+  "description": "读取画板快照与原始资源，按资源增量下载；保留授权目录及文件校验。",
+  "permissions": ["storage", "sidePanel", "scripting", "downloads"],
+  "host_permissions": ["https://jimeng.jianying.com/*", "https://*.byteimg.com/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "即梦画布批量导出助手" },
+  "side_panel": { "default_path": "sidepanel.html" }
+}

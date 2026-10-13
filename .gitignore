@@ -1,0 +1,14 @@
+node_modules/
+dist/
+backups/
+test-results/
+playwright-report/
+.env
+.env.*
+*.har
+*.log
+RESOURCE_NODE_INDEX.json
+INVESTIGATION.md
+GENERATED_VALIDATION.md
+SNAPSHOT_STRUCTURE_REPORT.md
+TEST_REPORT.md

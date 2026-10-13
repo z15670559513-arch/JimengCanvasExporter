@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="sidepanel.css"><title>即梦画布导出</title></head>
+<body>
+<header><div><h1>即梦画板导出</h1><p>原图增量下载 · 多画板独立保存</p></div><span id="version" class="version"></span></header>
+<main>
+<label for="canvasUrl">画布链接</label>
+<div class="input-row"><input id="canvasUrl" type="url" placeholder="粘贴即梦画布链接"><button id="useCurrent" class="secondary compact" title="使用当前打开的即梦画布">用当前</button></div>
+<label for="saveMode">保存位置</label><select id="saveMode"><option value="chrome">Chrome 默认下载位置</option><option value="folder">指定授权文件夹（回读校验）</option></select>
+<button id="chooseFolder" class="secondary folder-button">选择指定文件夹</button><p id="folderName" class="path">Chrome 默认下载位置</p>
+<div class="row actions"><button id="scan" class="secondary">扫描图片</button><button id="start" disabled>开始下载</button></div>
+<section class="stats"><div><strong id="found">0</strong><span>图片节点</span></div><div><strong id="unique">0</strong><span>唯一资源</span></div><div><strong id="completed">0</strong><span>已保存</span></div><div><strong id="remaining">0</strong><span>待下载</span></div><div><strong id="failed">0</strong><span>失败</span></div></section>
+<p id="coverage" class="muted small">原图链接已解析 0 · 未解析 0 · 待解析 0</p>
+<progress id="progress" value="0" max="1"></progress><div id="progressText" class="muted">扫描后即可导出</div>
+<p id="transferDetails" class="muted small" style="white-space:pre-line"></p><p id="elapsed" class="muted small"></p>
+<p id="latestStatus" class="status" role="status">先选择画布和保存文件夹。</p>
+<button id="reconnect" class="secondary" hidden title="重载插件，保留本地历史任务；随后重新打开侧栏">更新插件连接</button>
+<div class="row"><button id="pause" disabled class="secondary">暂停</button><button id="resume" disabled class="secondary">继续</button><button id="retry" disabled class="secondary">重试未完成</button></div>
+<p class="hint">无需右键、滚动画板或点击 PNG。关闭侧栏会停止新请求；记录保留，重新打开可恢复。旧版记录和图片不会删除。</p>
+<p id="integrity" class="muted small">扫描读取快照，不依赖视口可见图片。</p>
+<details class="options"><summary>任务记录与设置</summary>
+<label for="history">历史任务</label><select id="history"><option value="">选择历史任务继续</option></select>
+<p id="historySummary" class="muted small"></p>
+<label class="check"><input id="subfolders" type="checkbox" checked>新画板按 ID 建子目录（旧任务保持原位置）</label>
+<label for="batchSize">每批资源数</label><select id="batchSize"><option>50</option><option selected>100</option><option>200</option></select>
+<label for="concurrency">最大并发</label><select id="concurrency"><option selected>1</option><option>2</option><option>3</option></select>
+<label for="retries">网络错误重试次数</label><select id="retries"><option>0</option><option selected>1</option><option>2</option></select>
+<label for="interval">请求间隔</label><select id="interval"><option value="1000" selected>1 秒</option><option value="2000">2 秒</option><option value="3000">3 秒</option></select>
+<p class="muted small">优先项目资源和生成记录，未解析不会阻断其他原图。连续 3 次下载错误或授权异常停止；参数不代表网站限额。</p>
+<div class="row"><button id="probe" class="secondary">试下载 10 张生成图</button><button id="report" class="secondary">保存报告</button><button id="openCanvas" class="secondary">打开链接</button></div>
+<button id="verifyGenerated" class="secondary">试下载 1 张生成图</button>
+</details>
+<details class="logs"><summary>详细日志</summary><pre id="log"></pre></details>
+</main><script type="module" src="sidepanel.js"></script>
+</body></html>
